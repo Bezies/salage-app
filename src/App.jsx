@@ -4,6 +4,7 @@ import Personnaliser from "./components/Personnaliser";
 
 export default function App() {
   const [pi, setPi] = useState("");
+  const [poidsActuel, setPoidsActuel] = useState("");
   const [perte, setPerte] = useState(30);
   const mode = ["Calcul de base", "Personnaliser"];
   const [active, setActive] = useState(mode[0]);
@@ -62,6 +63,22 @@ export default function App() {
               </p>
             </div>
           )}
+          <div className="mt-10">
+            <h3 className="text-lg">Calcul de la perte:</h3>
+            <input
+              value={poidsActuel}
+              onChange={(e) => setPoidsActuel(e.target.value)}
+              className="py-2 mt-5 rounded-lg text-black pl-3 placeholder:text-sm outline-none"
+              placeholder="Saisir le poids actuel"
+              type="text"
+            />
+            {poidsActuel !== "" && (
+              <p className="mt-5">
+                <span className="font-thin">Perte de la pièce:</span>{" "}
+                {100 - ((poidsActuel * 100) / pi).toFixed(0)}%
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </div>
